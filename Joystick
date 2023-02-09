@@ -1,0 +1,68 @@
+/*
+ * Created by ArduinoGetStarted.com
+ *
+ * This example code is in the public domain
+ *
+ * Tutorial page: https://arduinogetstarted.com/tutorials/arduino-joystick
+ */
+
+#define VRX_PIN  A0 // Arduino pin connected to VRX pin
+#define VRY_PIN  A1 // Arduino pin connected to VRY pin
+
+int xValue = 0; // To store value of the X axis
+int yValue = 0; // To store value of the Y axis
+
+void setup() {
+  Serial.begin(9600) ;
+  pinMode(7, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(2, OUTPUT);
+}
+
+void loop() {
+  // read analog X and Y analog values
+  xValue = analogRead(VRX_PIN);
+  yValue = analogRead(VRY_PIN);
+
+  // print data to Serial Monitor on Arduino IDE
+  Serial.print("x = ");
+  Serial.print(xValue);
+  Serial.print(", y = ");
+  Serial.println(yValue);
+
+  if(xValue > 530){
+    digitalWrite(7, HIGH);
+  } else {
+    digitalWrite(7, LOW);
+  }
+
+    if(xValue < 490){
+    digitalWrite(2, HIGH);
+  } else {
+    digitalWrite(2, LOW);
+  }
+
+      if(yValue < 490){
+    digitalWrite(3, HIGH);
+  } else {
+    digitalWrite(3, LOW);
+  }
+
+    if(yValue < 490){
+    digitalWrite(3, HIGH);
+  } else {
+    digitalWrite(3, LOW);
+  }
+/*
+    if(yValue > 530){
+    digitalWrite(6, HIGH);
+  } else {
+    digitalWrite(6, LOW);
+  }
+*/  
+  
+  delay(50);
+}
